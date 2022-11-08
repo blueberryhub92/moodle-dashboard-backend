@@ -9,8 +9,6 @@ import groups.planning as plan
 @app.route('/')
 def fetch_acceleration_data():
     return 'Hello world'
-    # grades = QuizGradesModel.query.all()
-    # return render_template('index.html', grades=grades)
 
 @app.route('/api')
 def api():
