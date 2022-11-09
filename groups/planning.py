@@ -1,2 +1,3 @@
 def planning():
-    return 'planning working'
+    sql = "SELECT * FROM mdl_backup_logs"
+    return sql

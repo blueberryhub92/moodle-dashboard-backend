@@ -1,2 +1,3 @@
 def overall_progress():
-    return 'overall_progress working'
+    sql = "SELECT * FROM mdl_backup_logs"
+    return sql

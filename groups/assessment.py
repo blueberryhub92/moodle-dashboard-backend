@@ -1,2 +1,3 @@
 def assessment():
-    return 'assessment working'
+    sql = "SELECT * FROM mdl_backup_logs"
+    return sql
