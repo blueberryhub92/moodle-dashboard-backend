@@ -1,3 +1,3 @@
 def assessment():
-    sql = "SELECT * FROM mdl_backup_logs"
+    sql = "SELECT * FROM mdl_quiz_grades"
     return sql
