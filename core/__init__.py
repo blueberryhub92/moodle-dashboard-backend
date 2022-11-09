@@ -81,15 +81,15 @@ def close_ssh_tunnel():
     
     tunnel.close
 
-# open_ssh_tunnel()
-# mysql_connect()
-# df = run_query("SELECT * FROM mdl_quiz_grades")
-# print(df.head())
+open_ssh_tunnel()
+mysql_connect()
+df = run_query("SELECT * FROM mdl_quiz_grades")
+print(df.head())
 
-# mysql_disconnect()
-# close_ssh_tunnel()
+mysql_disconnect()
+close_ssh_tunnel()
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/test2'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/test2'
 
 import views
