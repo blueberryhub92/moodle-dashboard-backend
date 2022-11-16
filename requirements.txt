@@ -7,3 +7,4 @@ SQLAlchemy-serializer==1.4
 flask-marshmallow==0.14.0
 marshmallow-sqlalchemy==0.28.1
 sshtunnel==0.4.0
+pandas==1.5.1
