@@ -11,10 +11,10 @@ from sshtunnel import SSHTunnelForwarder
 app = Flask(__name__)
 CORS(app)
 
-ssh_host = '83.212.82.117'
+ssh_host = '83.212.126.199'
 ssh_username = 'user'
-ssh_password = 'PmD4lQ7XLM'
-database_username = 'root'
+ssh_password = 'Yz05ddnaTH'
+database_username = 'moodledude'
 database_password = 'root'
 database_name = 'moodle'
 localhost = '127.0.0.1'
