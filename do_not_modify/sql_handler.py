@@ -1,4 +1,4 @@
-from typing import Tuple, Dict, List, Any
+from typing import Any
 
 import pandas
 import pymysql
@@ -52,7 +52,7 @@ class SQLConnectionHandler:
         try:
             self.connection = pymysql.connect(
                 host='127.0.0.1',
-                user=self.credentials["database_username"],  # Modify here for error demo
+                user=self.credentials["database_username"],
                 passwd=self.credentials["database_password"],
                 db=self.credentials["database_name"],
                 port=tunnel.local_bind_port
