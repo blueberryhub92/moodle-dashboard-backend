@@ -16,5 +16,5 @@ class GroupPlanning:
         print(pd_dataframe[pd_dataframe["grade"] == '8.50000'])
         print(pd_dataframe[pd_dataframe["timemodified"].isin([1577442881, 1577442882])])
         # Work with json data.
-        data = operation_result.get("data")
+        data = operation_result.get("result")
         return operation_result
