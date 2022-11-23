@@ -1,4 +1,4 @@
-from typing import Tuple, Dict, List, Any
+from typing import Any
 
 import pandas
 import pymysql
