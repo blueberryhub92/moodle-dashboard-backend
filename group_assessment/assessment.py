@@ -4,7 +4,7 @@ from do_not_modify.sql_handler import SQLHandlerFacade
 class GroupAssessment:
     def __init__(self, app):
         self.app = app
-        print("hello Rojal")
+        print("push commit")
 
     def operation(self) -> dict:
         handler = SQLHandlerFacade(app=self.app, query="SELECT * FROM mdl_quiz_grades")
