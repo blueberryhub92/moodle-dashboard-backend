@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        a {
+            text-decoration: none;
+        }
+        nav {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+        .nav-link {
+            background-color: black;
+            color: white;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-link">Home</a>
+        <a href="/group/assessment" class="nav-link">Assessment</a>
+    </nav>
+    <main>
+        <h1>Assessment page</h1>
+        <div id="content"></div>
+        <button id="dataButton" py-click="load_data()">Load data...</button>
+        <py-script src="/static/assessment_view.py"></py-script>
+    </main>
+</body>
+</html>
