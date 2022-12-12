@@ -1,5 +1,7 @@
 from do_not_modify.sql_handler import SQLHandlerFacade
 import time
+import pandas as pd
+import os
 
 
 class GroupOverallProgress:
@@ -23,18 +25,14 @@ class GroupOverallProgress:
         return operation_result
 
     def operation2(self) -> dict:
-        handler = SQLHandlerFacade(app=self.app,
-                                   query="SELECT * FROM logs_LA_20__21_20221202-1706")
-        operation_result, pd_dataframe = handler.operation()
-
-        logs = operation_result.get("result")
-        self.logData = logs
-        print(self.logData)
+        #path = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', './logs_LA_20__21_20221202-1706.csv'))
+        #df = pd.read_csv(path)
+        #print(df)
 
         self.redirect('URL', '4')
         self.redirect('File', '6')
 
-        return operation_result
+        #return df
 
     def redirect(self, component, id):
         if component == 'URL':
