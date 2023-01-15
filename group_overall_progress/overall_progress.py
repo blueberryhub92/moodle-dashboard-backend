@@ -5,10 +5,7 @@ import json
 import pandas as pd
 import math
 
-# enrolled users(localy)
-# df_users = pd.read_excel(io=r"C:\Users\admin\Downloads\Py_DS_ML_Bootcamp-master\enrolledusers.xlsx")
-# enrolled_users = list(df_users['User full name'].unique())
-# enrolled_users.remove('anonfirstname12 anonlastname12')"""
+
 class GroupOverallProgress:
     def __init__(self, app):
         self.app = app
@@ -23,8 +20,12 @@ class GroupOverallProgress:
         url = 'https://raw.githubusercontent.com/blueberryhub92/moodle-dashboard-backend/main/logs_LA_20__21_20221202-1706.csv'
         df = pd.read_csv(url)
 
-        #  the list of all the enrolled users
-        eu = ['anonfirstname31 anonlastname31', 'anonfirstname62 anonlastname62', 'anonfirstname65 anonlastname65',
+        # reading the enrolled users file from the list
+        url2 = 'https://raw.githubusercontent.com/blueberryhub92/moodle-dashboard-backend/main/enrolled_users.csv'
+        enrolledusers = pd.read_csv(url2)
+
+        #  the list of all the enrolled users(hard code)
+        ''''eu = ['anonfirstname31 anonlastname31', 'anonfirstname62 anonlastname62', 'anonfirstname65 anonlastname65',
          'anonfirstname51 anonlastname51', 'anonfirstname66 anonlastname66', 'anonfirstname47 anonlastname47',
          'anonfirstname48 anonlastname48', 'anonfirstname68 anonlastname68', 'anonfirstname59 anonlastname59',
          'anonfirstname64 anonlastname64', 'anonfirstname67 anonlastname67', 'anonfirstname53 anonlastname53',
@@ -33,14 +34,16 @@ class GroupOverallProgress:
          'anonfirstname63 anonlastname63', 'anonfirstname54 anonlastname54', 'anonfirstname56 anonlastname56',
          'anonfirstname61 anonlastname61', 'anonfirstname69 anonlastname69', 'anonfirstname58 anonlastname58',
          'anonfirstname52 anonlastname52', 'anonfirstname71 anonlastname71', 'anonfirstname72 anonlastname72',
-         'anonfirstname21 anonlastname21']
+         'anonfirstname21 anonlastname21']'''
 
-
+        eu = list(enrolledusers['User full name'].unique())
+        eu.remove('anonfirstname12 anonlastname12')
+        print(eu)
 
         default_user = str(63)
 
         # user quisez
-        Quiz_module_id = ['610', '616', '664', '669', '679', '697']
+        # Quiz_module_id = ['610', '616', '664', '669', '679', '697']
 
         df_user_quiz = df[(df['UserID'] == default_user)
                           & (df["Event context"] != "Quiz: E-exam") &
@@ -48,7 +51,7 @@ class GroupOverallProgress:
         print(df_user_quiz)
 
         # user assignments
-        Asg_module_id = ['623', '640', '698', '708']
+        # Asg_module_id = ['623', '640', '698', '708']
         df_user_assignment = df[(df['UserID'] == default_user) & (df["Component"] == "Assignment") &
                                 (df['Event name'] == "A submission has been submitted.")]
         print(df_user_assignment)
