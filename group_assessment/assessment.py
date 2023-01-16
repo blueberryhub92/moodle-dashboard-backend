@@ -27,7 +27,7 @@ class GroupAssessment:
                           initialized from a mapping object's (key, value) pairs.
         """
         # logged in user
-        current_user = 185
+        current_user = 181
         # handler = SQLHandlerFacade(app=self.app, query="SELECT * FROM mdl_quiz_grades")
         # operation_result, quiz_grades_df = handler.operation()
 
@@ -56,6 +56,22 @@ class GroupAssessment:
         # specifying the current user data for grades
         quiz_grades_df_edited = quiz_grades_df.loc[quiz_grades_df['userid'] == current_user]
 
+        # normalizing the values of the Graph(lazy way)
+        quiz1nor = quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 1', 'grade']
+        quiz2nor = quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 2', 'grade']
+        quiz4nor = quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 4', 'grade']
+        quiz6nor = quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 6', 'grade']
+
+        quiz1_changed_value = ((quiz1nor - 0) / (3 - 0)) * 10
+        quiz2_changed_value = ((quiz2nor - 0) / (4 - 0)) * 10
+        quiz4_changed_value = ((quiz4nor - 0) / (3 - 0)) * 10
+        quiz6_changed_value = ((quiz6nor - 0) / (3 - 0)) * 10
+
+        quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 1', 'grade'] = quiz1_changed_value
+        quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 2', 'grade'] = quiz2_changed_value
+        quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 4', 'grade'] = quiz4_changed_value
+        quiz_grades_df_edited.loc[quiz_grades_df_edited['quiz'] == 'quiz 6', 'grade'] = quiz6_changed_value
+
         # changing the values of assignment
         assign_grades_df['assignment'] = assign_grades_df['assignment'].replace(
             {27: 'AS1 - W3', 28: 'AS2 - W5', 30: 'AS3 - W10', 31: 'AS4 - W11', -1: 0, 'Null': 0})
@@ -63,7 +79,7 @@ class GroupAssessment:
         assign_grades_df['grade'] = assign_grades_df['grade'].replace({-1: 0, 'Null': 0})
 
         # specifying current user data for assignment
-        assign_edited = assign_grades_df.loc[assign_grades_df['userid'] == 185]
+        assign_edited = assign_grades_df.loc[assign_grades_df['userid'] == current_user]
 
         # Work with json data.
         # converting quiz grades to json data
