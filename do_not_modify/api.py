@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 
 from group_assessment.assessment import GroupAssessment
@@ -11,11 +11,16 @@ CORS(app)
 
 @app.route('/')
 def api_init():
-    return 'Hello World'
+    return render_template('home.html')
+
+
+@app.route('/group/assessment')
+def get_assessment_view():
+    return render_template('assessment.html')
 
 
 @app.route('/api/group/assessment')
-def get_assessment():
+def get_assessment_api():
     instance_of_assessment = GroupAssessment(app=app)
     return instance_of_assessment.operation()
 
